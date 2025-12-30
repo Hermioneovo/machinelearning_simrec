@@ -1,9 +1,10 @@
 # machinelearning_simrec
 ## 运行指令
 对比实验源码在main分支
+
 ************对比实验运行指令*************
 
-运行位置：......\ReChorus-master\ReChorus-master
+运行位置：......\ReChorus-master
 
 python src/main.py --model_name NeuMF --dataset MovieLens_1M --emb_size 32 --lr 0.001 --l2 0 --layers [64] --epoch 50 --early_stop 10 --batch_size 2048 --eval_batch_size 2048 --num_neg 99 --gpu -1 --num_workers 0
 
@@ -19,6 +20,7 @@ python src/main.py --model_name SimRec --dataset Grocery_and_Gourmet_Food --emb_
 
 
 消融实验和超参实验的源码在SimRec分支
+
 ************消融实验运行指令（在框架中运行可能要自行调整main.py文件地址）*************
 
 python Main.py --epoch 50 --data yelp --teacher_model lightgcn_yelp --save_path full_simrec_yelp
