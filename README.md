@@ -1,10 +1,12 @@
 # machinelearning_simrec
-## 运行指令
-# 对比实验源码在main分支
+## 对比实验
+### 源码
 
-************对比实验运行指令*************
+在main分支
 
-运行位置：......\ReChorus-master
+### 运行指令
+
+运行位置：...\ReChorus-master（即data/docs/src文件夹所在处）
 
 python src/main.py --model_name NeuMF --dataset MovieLens_1M --emb_size 32 --lr 0.001 --l2 0 --layers [64] --epoch 50 --early_stop 10 --batch_size 2048 --eval_batch_size 2048 --num_neg 99 --gpu -1 --num_workers 0
 
@@ -17,6 +19,33 @@ python src/main.py --model_name NeuMF --dataset Grocery_and_Gourmet_Food --emb_s
 python src/main.py --model_name LightGCN --dataset Grocery_and_Gourmet_Food --emb_size 32 --n_layers 2 --lr 0.001 --epoch 50 --early_stop 10 --batch_size 4096 --eval_batch_size 8192 --gpu 0
 
 python src/main.py --model_name SimRec --dataset Grocery_and_Gourmet_Food --emb_size 32 --teacher_path  "E:\HOMEWORK\大三上\机器学习\理论课大作业\ReChorus-master\model\LightGCN\LightGCN__Grocery_and_Gourmet_Food__0__lr=0.001__l2=0__emb_size=32__n_layers=2__batch_size=4096.pt"  --lambda_kd 0.3 --temp_soft 1.0 --lr 0.001 --epoch 50 --early_stop 10 --batch_size 4096 --eval_batch_size 8192 --gpu 0
+
+### 修改的代码说明
+
+1.ReChorus-master\src\models\BaseModel.py    
+
+将neg_items = self.data['neg_items'][index]
+
+改为
+if self.phase != 'train':
+    if 'neg_items' in self.data:
+        neg_items = self.data['neg_items'][index]
+    else:
+        # dev/test 阶段自动随机采样负样本
+        user = self.data['user_id'][index]
+        pos_item = self.data['item_id'][index]
+
+        all_items = np.arange(1, self.corpus.n_items)
+        neg_items = np.setdiff1d(all_items, [pos_item])
+
+        # 取前 num_neg 个（或随机）
+        neg_items = np.random.choice(
+            neg_items,
+            size=self.model.num_neg,
+            replace=False
+        )
+else:
+    neg_items = self.data['neg_items'][index]
 
 
 # 消融实验和超参实验的源码在SimRec分支
