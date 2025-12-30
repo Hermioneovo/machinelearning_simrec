@@ -48,10 +48,18 @@ if self.phase != 'train':
 else:
     neg_items = self.data['neg_items'][index]
 ```
+2.ReChorus-master\src\models\general\SimRec.py
 
-# 消融实验和超参实验的源码在SimRec分支
+模型代码
 
-************消融实验运行指令（在框架中运行可能要自行调整main.py文件地址）*************
+## 消融实验和超参实验
+### 源码
+
+在SimRec分支
+
+### 运行指令
+
+在框架中运行可能要自行调整main.py文件地址）
 
 python Main.py --epoch 50 --data yelp --teacher_model lightgcn_yelp --save_path full_simrec_yelp
 
