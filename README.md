@@ -27,6 +27,7 @@ python src/main.py --model_name SimRec --dataset Grocery_and_Gourmet_Food --emb_
 将neg_items = self.data['neg_items'][index]
 
 改为
+```
 if self.phase != 'train':
     if 'neg_items' in self.data:
         neg_items = self.data['neg_items'][index]
@@ -46,7 +47,7 @@ if self.phase != 'train':
         )
 else:
     neg_items = self.data['neg_items'][index]
-
+```
 
 # 消融实验和超参实验的源码在SimRec分支
 
