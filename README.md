@@ -1,6 +1,6 @@
 # machinelearning_simrec
 ## 运行指令
-对比实验源码在main分支
+# 对比实验源码在main分支
 
 ************对比实验运行指令*************
 
@@ -19,7 +19,7 @@ python src/main.py --model_name LightGCN --dataset Grocery_and_Gourmet_Food --em
 python src/main.py --model_name SimRec --dataset Grocery_and_Gourmet_Food --emb_size 32 --teacher_path  "E:\HOMEWORK\大三上\机器学习\理论课大作业\ReChorus-master\model\LightGCN\LightGCN__Grocery_and_Gourmet_Food__0__lr=0.001__l2=0__emb_size=32__n_layers=2__batch_size=4096.pt"  --lambda_kd 0.3 --temp_soft 1.0 --lr 0.001 --epoch 50 --early_stop 10 --batch_size 4096 --eval_batch_size 8192 --gpu 0
 
 
-消融实验和超参实验的源码在SimRec分支
+# 消融实验和超参实验的源码在SimRec分支
 
 ************消融实验运行指令（在框架中运行可能要自行调整main.py文件地址）*************
 
