@@ -61,6 +61,8 @@ else:
 
 在框架中运行可能要自行调整main.py文件地址）
 
+#### 消融实验
+
 python Main.py --epoch 50 --data yelp --teacher_model lightgcn_yelp --save_path full_simrec_yelp
 
 python Main.py --epoch 50 --data yelp --teacher_model lightgcn_yelp --save_path ablation_1_yelp --softreg 0 
@@ -77,7 +79,7 @@ python Main.py --epoch 50 --data gowalla --teacher_model lightgcn_gowalla --save
 
 python Main.py --epoch 50 --data gowalla --teacher_model lightgcn_gowalla --save_path ablation_3_gowalla --screg 0
 
-************超参实验运行指令（在框架中运行可能要自行调整main.py文件地址）*************
+#### 超参实验
 
 python Main.py --epoch 20 --data gowalla --teacher_model lightgcn_gowalla --save_path hyper_softreg_1e-3_gowalla  --softreg 0.001
 
